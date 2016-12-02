@@ -1,0 +1,15 @@
+{
+  "name": "hangout_bot",
+  "version": "0.0.0",
+  "description": "A bot for the \\\"The Programmer\\'s Hangout\\\" discord server",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HarryNews/HangoutBot.git"
+  },
+  "author": "Harry Brickner",
+  "license": "ISC"
+}
