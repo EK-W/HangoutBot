@@ -1,6 +1,9 @@
+const secret = require("./secret.js");
+
 const discordio = require("discord.io");
+
 const bot = new discordio.Client({
-	token: "MjU0MDQ0MDAwODc5NjQwNTc2.CyJUbw.0aEsP28q2km1Lk2DfwvH__VmT80",
+	token: secret.token,
 	autorun: true,
 });
 
@@ -54,21 +57,24 @@ commands.goodanswer = function(message, args, user, channel, server) {
 	const ReputationMessage = sequelize.models.ReputationMessage;
 
 	const target = message.mentions[0];
+	const language = args[1];
 
-	if(!target) {
+	if(!target || !language) {
 		bot.sendMessage({
 			to: channel.id,
 			message: "Format: `+rep @user <language>`",
 		});
-	}
 
-	const language = args[1];
+		return;
+	}
 
 	if(language.startsWith("<")) {
 		bot.sendMessage({
 			to: channel.id,
 			message: "Language name may not be a mention or otherwise start with `<`",
 		});
+
+		return;
 	}
 
 	sequelize.transaction(function(transaction) {
